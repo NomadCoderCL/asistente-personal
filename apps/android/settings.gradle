@@ -1,0 +1,2 @@
+rootProject.name = 'carmen-assistant-android'
+include ':app'

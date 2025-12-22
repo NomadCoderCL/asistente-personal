@@ -1,0 +1,5 @@
+;!@Install@!UTF-8!
+Title="Asistente Personal (Portable)"
+BeginPrompt="Extraer y ejecutar Asistente Personal (portable)?"
+RunProgram="Asistente Personal.exe"
+;!@InstallEnd@!

@@ -1,0 +1,27 @@
+ACUERDO DE LICENCIA DE USUARIO FINAL (EULA)
+
+IMPORTANTE: LEA DETENIDAMENTE ESTE ACUERDO ANTES DE INSTALAR O USAR "ASISTENTE PERSONAL".
+
+1. OTORGAMIENTO DE LICENCIA
+Por el presente, se le otorga una licencia limitada, no exclusiva e intransferible para instalar y utilizar el software "Asistente Personal" (el "Software") estrictamente para su uso personal.
+
+2. DERECHOS DE AUTOR Y PROPIEDAD INTELECTUAL
+Todos los derechos, títulos e intereses sobre el Software, incluidos, entre otros, los derechos de autor, patentes, secretos comerciales y otros derechos de propiedad intelectual, son propiedad exclusiva de "Asistente Personal" y sus licenciantes.
+TODOS LOS DERECHOS RESERVADOS.
+
+3. RESTRICCIONES
+Usted no puede:
+- Modificar, adaptar o traducir el Software.
+- Realizar ingeniería inversa, descompilar o desensamblar el Software.
+- Alquilar, arrendar, prestar o distribuir el Software a terceros sin autorización previa por escrito.
+
+4. RENUNCIA DE GARANTÍA
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA. EL USO DEL SOFTWARE ES BAJO SU PROPIO RIESGO.
+
+5. TERMINACIÓN
+Esta licencia es efectiva hasta que sea terminada. Sus derechos bajo esta licencia terminarán automáticamente sin previo aviso si incumple cualquiera de los términos de este acuerdo.
+
+6. LEY APLICABLE
+Este acuerdo se regirá e interpretará de acuerdo con las leyes vigentes en su jurisdicción.
+
+Al instalar o utilizar el Software, usted acepta estar obligado por los términos de este acuerdo. Si no está de acuerdo, no instale ni utilice el Software.

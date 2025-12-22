@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+*.pyc
+*.sqlite3
+*.db
+/*.log
+/.idea/
+*.iml
+/.DS_Store
+apps/desktop/backend/runtime/ollama/models/*
+apps/desktop/backend/runtime/ollama/ollama*  # binarios sin commitear
+apps/android/app/src/main/assets/models/*

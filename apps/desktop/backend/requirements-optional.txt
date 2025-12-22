@@ -1,0 +1,6 @@
+# Dependencias opcionales que pueden requerir instalación especial en Windows
+# Recomendado: instalar con conda en Windows
+# conda install -c conda-forge faiss-cpu chromadb -y
+
+faiss-cpu
+chromadb

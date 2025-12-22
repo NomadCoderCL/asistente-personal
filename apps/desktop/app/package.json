@@ -1,0 +1,28 @@
+{
+  "name": "carmen-desktop-app",
+  "version": "0.1.0",
+  "description": "Asistente personal con IA que funciona completamente offline.",
+  "author": "Asistente Personal",
+  "private": true,
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc -p tsconfig.main.json",
+    "dist": "electron-builder --config ../builder/electron-builder.yml"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.11.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.2",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "electron": "30.0.0",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.2.2",
+    "vite": "5.0.0"
+  }
+}

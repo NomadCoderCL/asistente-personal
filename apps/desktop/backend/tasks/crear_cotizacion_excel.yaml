@@ -1,0 +1,17 @@
+id: crear_cotizacion_excel
+description: Crear una cotización en Excel, exportar a PDF y verificar archivo.
+steps:
+  - name: crear_excel
+    action: fill_excel
+    params:
+      template: templates/xlsx/cotizacion_template.xlsx
+      output: output/cotizacion_cliente.xlsx
+  - name: export_pdf
+    action: export_pdf
+    params:
+      input: output/cotizacion_cliente.xlsx
+      output: output/cotizacion_cliente.pdf
+  - name: verify_pdf
+    action: verify_file
+    params:
+      path: output/cotizacion_cliente.pdf

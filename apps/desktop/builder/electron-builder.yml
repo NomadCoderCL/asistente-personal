@@ -1,0 +1,123 @@
+appId: com.carmen.assistant
+productName: Asistente Personal
+copyright: Copyright © 2024 Asistente Personal. Todos los derechos reservados.
+electronVersion: 30.0.0
+
+directories:
+  output: release
+  buildResources: ../builder/resources
+
+files:
+  - dist/**/*
+  - src/main/**/*
+  - package.json
+  - "!**/*.ts"
+  - "!**/*.map"
+
+extraResources:
+  - from: ../backend
+    to: backend
+    filter:
+      - "**/*"
+      - "!.venv/**/*"
+      - "!__pycache__/**/*"
+      - "!*.pyc"
+      - "!.pytest_cache/**/*"
+      - "!tests/**/*"
+      - "!*.log"
+
+asar: true
+asarUnpack:
+  - "**/*.node"
+
+compression: maximum
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: ../builder/resources/icon.ico
+
+  verifyUpdateCodeSignature: false
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  runAfterFinish: true
+  installerIcon: ../builder/resources/icon.ico
+  uninstallerIcon: ../builder/resources/icon.ico
+  installerHeaderIcon: ../builder/resources/icon.ico
+  deleteAppDataOnUninstall: false
+  displayLanguageSelector: true
+  multiLanguageInstaller: true
+  language: 1033  # English
+  include: ../builder/installer.nsh
+  license: ../builder/resources/EULA.txt
+
+mac:
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+  category: public.app-category.productivity
+  icon: ../builder/resources/icon.icns
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: ../builder/entitlements.mac.plist
+  entitlementsInherit: ../builder/entitlements.mac.plist
+
+dmg:
+  title: "${productName} ${version}"
+  icon: ../builder/resources/icon.icns
+  background: ../builder/resources/dmg-background.png
+  window:
+    width: 540
+    height: 380
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
+
+linux:
+  target:
+    - target: AppImage
+      arch:
+        - x64
+    - target: deb
+      arch:
+        - x64
+  category: Utility
+  icon: ../builder/resources/icon.png
+  synopsis: Tu asistente personal inteligente
+  description: Asistente personal con IA que funciona completamente offline.
+  vendor: Asistente Personal
+  maintainer: Equipo de Desarrollo
+
+appImage:
+  license: LICENSE
+
+deb:
+  depends:
+    - gconf2
+    - gconf-service
+    - libnotify4
+    - libappindicator1
+    - libxtst6
+    - libnss3
+  priority: optional
+
+publish:
+  provider: github
+  owner: your-github-username
+  repo: carmen-assistant
+  releaseType: release
+
