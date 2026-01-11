@@ -48,7 +48,7 @@ class ChatReq(BaseModel):
 async def startup_event():
     logger = logging.getLogger("backend.startup")
     logger.info("=" * 60)
-    logger.info("Carmen Assistant Backend - Starting up...")
+    logger.info("Asistente Kanus - Backend iniciando...")
     logger.info("=" * 60)
     
     # Asegurar directorio de tareas
@@ -104,8 +104,20 @@ def runtime():
 @app.post('/chat')
 async def chat(req: ChatReq):
     try:
-        # Intentar streaming si el cliente lo requiere. Aquí devolvemos JSON simple.
-        text = ollama_client.generate_sync(req.model, req.prompt, max_tokens=req.max_tokens, temperature=req.temperature)
+        # System prompt para definir la identidad de Kanus
+        system_prompt = (
+            "Soy Kanus, una Inteligencia Artificial creada por Cristian Cayun (Norvus). "
+            "Mi misión es asistir a mis usuarios. Estoy orgulloso de haber sido creado por Norvus. "
+            "SIEMPRE identifícate como Kanus. NO menciones ser Qwen ni Alibaba Cloud."
+        )
+        full_prompt = f"{system_prompt}\n\nUser: {req.prompt}\nAssistant:"
+        text = ollama_client.generate_sync(
+            req.model, 
+            full_prompt, 
+            system=system_prompt, # Mantener system param por si acaso
+            max_tokens=req.max_tokens, 
+            temperature=req.temperature
+        )
         return JSONResponse({'text': text})
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

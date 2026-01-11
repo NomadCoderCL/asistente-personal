@@ -99,7 +99,7 @@ export default function Chat() {
         marginBottom: 'var(--spacing-lg)'
       }}>
         <div>
-          <h2 style={{ margin: 0, marginBottom: 'var(--spacing-xs)' }}>💬 Chat con Carmen</h2>
+          <h2 style={{ margin: 0, marginBottom: 'var(--spacing-xs)' }}>💬 Asistente Kanus</h2>
           <p style={{ margin: 0, color: 'var(--dark-text-secondary)', fontSize: '0.875rem' }}>
             Conversa con tu asistente personal inteligente
           </p>

@@ -13,7 +13,7 @@ def ping(timeout: float = 1.0) -> bool:
         return False
 
 
-def generate_sync(model: str, prompt: str, max_tokens: int = 256, temperature: float = 0.7) -> str:
+def generate_sync(model: str, prompt: str, system: str = None, max_tokens: int = 256, temperature: float = 0.7) -> str:
     """Synchronous, non-stream generate against Ollama.
     Notes:
     - Ollama uses 'num_predict' instead of 'max_tokens'.
@@ -26,6 +26,8 @@ def generate_sync(model: str, prompt: str, max_tokens: int = 256, temperature: f
         'temperature': temperature,
         'stream': False,
     }
+    if system:
+        payload['system'] = system
     try:
         r = requests.post(f"{OLLAMA_URL}/api/generate", json=payload, timeout=120)
         r.raise_for_status()
