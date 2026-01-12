@@ -4,12 +4,15 @@ import { contextBridge, ipcRenderer } from 'electron'
 contextBridge.exposeInMainWorld('carmen', {
   env: {
     UI_PORT: process.env.DESKTOP_UI_PORT || '5173',
-    BACKEND_PORT: process.env.DESKTOP_BACKEND_PORT || '8765'
+    BACKEND_PORT: process.env.DESKTOP_BACKEND_PORT || '8765',
+    BACKEND_HOST: process.env.DESKTOP_BACKEND_HOST || '127.0.0.1'
   },
 
   // Helper para obtener la URL del backend
   getBackendUrl: () => {
-    return `http://127.0.0.1:${process.env.DESKTOP_BACKEND_PORT || '8765'}`
+    const host = process.env.DESKTOP_BACKEND_HOST || '127.0.0.1'
+    const port = process.env.DESKTOP_BACKEND_PORT || '8765'
+    return `http://${host}:${port}`
   },
 
   // Información del sistema
