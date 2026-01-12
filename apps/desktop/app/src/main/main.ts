@@ -28,8 +28,23 @@ function createWindow() {
     }
   })
 
+  // Decide whether to load the dev server (during development) or the
+  // built local HTML (in production / packaged app).
   const devUrl = `http://localhost:${process.env.DESKTOP_UI_PORT || 5173}`
-  mainWindow.loadURL(devUrl)
+  const isDev = process.env.NODE_ENV === 'development' || process.env.DESKTOP_UI_DEV === 'true' || process.env.ELECTRON_START_URL
+
+  if (isDev) {
+    mainWindow.loadURL(devUrl)
+  } else {
+    // When packaged, Vite build output places renderer files under ../renderer
+    // relative to the compiled main bundle. Load the local index.html.
+    const indexHtml = path.join(__dirname, '..', 'renderer', 'index.html')
+    mainWindow.loadFile(indexHtml).catch(err => {
+      // Fallback: if the file cannot be loaded, open a simple error page
+      console.error('Failed to load local index.html', err)
+      mainWindow.loadURL(devUrl).catch(() => {})
+    })
+  }
 }
 
 app.whenReady().then(() => {
