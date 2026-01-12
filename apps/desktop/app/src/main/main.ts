@@ -10,7 +10,9 @@ function startBackend() {
   const backendPath = path.resolve(__dirname, '..', '..', 'backend')
   // Windows: use .\venv\Scripts\python.exe if exists; fallback to python
   const python = process.platform === 'win32' ? 'python' : 'python3'
-  backendProcess = spawn(python, ['-m', 'uvicorn', 'main:app', '--host', '127.0.0.1', '--port', process.env.DESKTOP_BACKEND_PORT || '8765'], {
+  const backendHost = process.env.DESKTOP_BACKEND_HOST || '127.0.0.1'
+  const backendPort = process.env.DESKTOP_BACKEND_PORT || '8765'
+  backendProcess = spawn(python, ['-m', 'uvicorn', 'main:app', '--host', backendHost, '--port', backendPort], {
     cwd: backendPath,
     stdio: 'inherit'
   })
