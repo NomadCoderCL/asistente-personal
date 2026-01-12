@@ -25,7 +25,8 @@ export default function Chat() {
 
   async function checkBackend() {
     try {
-      const res = await fetch('http://127.0.0.1:8765/health', { signal: AbortSignal.timeout(3000) })
+      const base = (window as any).carmen?.getBackendUrl?.() || 'http://127.0.0.1:8765'
+      const res = await fetch(`${base}/health`, { signal: AbortSignal.timeout(3000) })
       setBackendStatus(res.ok ? 'online' : 'offline')
     } catch {
       setBackendStatus('offline')
@@ -46,7 +47,8 @@ export default function Chat() {
     setIsLoading(true)
 
     try {
-      const res = await fetch('http://127.0.0.1:8765/chat', {
+      const base = (window as any).carmen?.getBackendUrl?.() || 'http://127.0.0.1:8765'
+      const res = await fetch(`${base}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

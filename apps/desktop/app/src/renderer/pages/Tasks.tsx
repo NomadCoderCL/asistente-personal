@@ -44,7 +44,8 @@ export default function Tasks() {
     setResult(null)
 
     try {
-      const res = await fetch('http://127.0.0.1:8765/tasks/run', {
+      const base = (window as any).carmen?.getBackendUrl?.() || 'http://127.0.0.1:8765'
+      const res = await fetch(`${base}/tasks/run`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_tarea: taskId, variables }),

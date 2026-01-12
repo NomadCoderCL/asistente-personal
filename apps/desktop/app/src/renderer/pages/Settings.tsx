@@ -16,7 +16,8 @@ export default function Settings() {
   async function checkRuntime() {
     setIsChecking(true)
     try {
-      const r = await fetch('http://127.0.0.1:8765/runtime', { signal: AbortSignal.timeout(5000) })
+      const base = (window as any).carmen?.getBackendUrl?.() || 'http://127.0.0.1:8765'
+      const r = await fetch(`${base}/runtime`, { signal: AbortSignal.timeout(5000) })
       const j = await r.json()
       setRuntimeStatus(j)
     } catch (e) {
@@ -32,7 +33,8 @@ export default function Settings() {
     }
 
     try {
-      await fetch('http://127.0.0.1:8765/clear', { method: 'POST' }).catch(() => { })
+      const base = (window as any).carmen?.getBackendUrl?.() || 'http://127.0.0.1:8765'
+      await fetch(`${base}/clear`, { method: 'POST' }).catch(() => { })
       alert('✓ Se solicitó borrar datos. Revisa el backend para confirmar.')
     } catch (e) {
       alert('✗ Error al intentar borrar datos.')
@@ -264,7 +266,7 @@ export default function Settings() {
             <span style={{ fontWeight: 600 }}>0.1.0</span>
 
             <span style={{ color: 'var(--dark-text-secondary)' }}>Backend URL:</span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>http://127.0.0.1:8765</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>{(window as any).carmen?.getBackendUrl?.() || 'http://127.0.0.1:8765'}</span>
 
             <span style={{ color: 'var(--dark-text-secondary)' }}>Plataforma:</span>
             <span style={{ fontWeight: 600 }}>{navigator.platform}</span>
